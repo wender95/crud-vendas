@@ -30,6 +30,7 @@ public class VendaController {
     @ResponseStatus(HttpStatus.CREATED)
     public Venda novavenda(@RequestBody Venda venda){
         venda.setData(LocalDateTime.now());
+        venda.setValorTotal(venda.getValorUnitario()*venda.getQuantidade());
         vendaRepository.save(venda);
         return venda;
     }
